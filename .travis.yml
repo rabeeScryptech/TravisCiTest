@@ -100,7 +100,7 @@ deploy:
 
   on:
 
-    repo: harmittaa/travis-example-android
+    repo: rabeeScryptech/TravisCiTest
 
     tags: true
 
