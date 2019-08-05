@@ -15,6 +15,11 @@ android:
   - addon-google_apis-google-16
 script:
 - cd android && ./gradlew assembleRelease
+branches:
+  only:
+  - master
+before_deploy:
+  - export RELEASE_TITLE=$(date '+%Y%m%d%H%M%S')-$TRAVIS_JOB_NUMBER
 deploy:
   provider: releases
   api_key:
