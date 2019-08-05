@@ -25,6 +25,6 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: Ay1JoVtG/zbT+RABHK5gZ79mHslJFBry206XHjh2ScEZOV+XfhxB4Obg9RPvdYVHzjbwF2Lq9W7HOGbfRr7Y7iKlNk+RuLZSgNSwtk7ZEfEUFhfvCZCbGvCJL7gaW/kMSfMWIE1EYWZ8GZo4IZEaT/iZgSc2Z9LGoH32u2iVcMdeUf5LoTsjfJiw5nokQk0Ngid5IvQ5dVf6YoHaV3FQAW92iCeo/JAviW08HgFIH6iD9+WDRsrB6zbQj/Ut2KdjDHSZDVRaqNrIeazVyN3UAoaSknBMxO1NT6n89CB2RSAC1lrlh/ADWkOA8147AwD5sD+jhEBYLYXXPsyFFRror7TJVH6O/vAwOEF9/c74tcNptq+/ZippASkoGTgHgBlDNCCayvenGm8kiO93g1TXd7yizABZRn+CeE4k8jpokXnLT0wMnwaVZtgN8eazaH8dM9PQz1YgzVriWu5EJnsFzDAHSeZpSJw5mKKC7naRIQQ6IsRg+jXAqNoEapIM6nkwlFaWMWrVuIiHxdB3MX2eKYr/vZho4skOWZJiWkvyGIRygiVkDOrUFE/SLoycd+LOd4DqeuOF0JklRsO4Y7hapOpMtha7W7GcsArUASbM/bUi+tvy2Xgb6n7u/toaBDCZU7PtmKnOslxwqjn22xO7F9Qzpw9NqxnETQ6IexqIcP0=
-  file: "$TRAVIS_BUILD_DIR/android/app/build/outputs/apk/release/app-release.apk"
+  file: "$TRAVIS_BUILD_DIR/android/app/build/outputs/apk/release/app-release-unsigned.apk"
   on:
     repo: rabeeScryptech/TravisCiTest
