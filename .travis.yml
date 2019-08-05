@@ -1,16 +1,14 @@
 language: android
 before_install:
-- nvm install 6
+- nvm install 10
 - node --version
 - chmod +x ./android/gradlew
 install:
 - npm install
-- npm install -g react-native-cli
-- react-native run-android
 android:
   components:
-  - build-tools-23.0.1
-  - android-23
+  - build-tools-28.0.3
+  - android-28
   - extra-android-m2repository
   - extra-google-google_play_services
   - extra-google-m2repository
