@@ -6,8 +6,6 @@ before_install:
 install:
 - npm install
 - npm install -g react-native-cli
-- react-native upgrade
-- react-native link
 - react-native run-android
 android:
   components:
