@@ -28,4 +28,3 @@ deploy:
   file: "$TRAVIS_BUILD_DIR/android/app/build/outputs/apk/release/app-release.apk"
   on:
     repo: rabeeScryptech/TravisCiTest
-    tags: true
