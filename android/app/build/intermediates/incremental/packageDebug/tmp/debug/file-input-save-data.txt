@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Aug 02 11:24:26 EEST 2019
+#Fri Aug 02 18:17:30 EEST 2019
 5.base=C\:\\Users\\RBK_9\\MyReactNative\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 42.base=C\:\\Users\\RBK_9\\MyReactNative\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 22.path=lib/arm64-v8a/libc++_shared.so
