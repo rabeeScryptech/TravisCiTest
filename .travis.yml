@@ -1,50 +1,69 @@
 language: android
-jdk: oraclejdk8
 sudo: required
-dist: precise
+jdk: oraclejdk8
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
-  yarn: true
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - node_modules
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+env:
+  global:
+  - ANDROID_API=24
+  - EMULATOR_API=21
+  - ANDROID_BUILD_TOOLS=24.0.2
+  - ADB_INSTALL_TIMEOUT=5
+  - secure: c2mJseLQCDKBLZhfDdA7L/OlvT6r+evAK3PCYzNyj2q1p5ZjE4OibWJnUfxh/HaGP3DQf3FVwlOq7KBt6HQZx3OCxladKAwBx9iXUPbUy3lur06KLQA9luIMlyhhfdLjQkdB4CqiYVOH7F2rfga/fDuzQ6MoCjoTkacn6ucYugx4JnhWk+3RCk62Vi5bMKUl72iHsfzExvqVnglZZF0os2aO3v63FN5ze+zwanyWvb4FnWl8bB638bZS0xzu8WL8MwcnFR+i17z7kMKHah6wSNfUYBIuQVUlTooFSmBguW+NOKrbcIEvK535VpkmandFq/W3NbE2x6/HPxBOlWNnj4RNk2kRoAzC8q53FNVh/gQWpuEeBB38G5UnlUI2u0WcoA6zqTBI5xEtXnAkLySXdjJo1l8B8IHx6wSfMUjQD5nfy0JnVt50pdiK8U644H4zrZly2PxrjsHra0RqycjoB6t3dbn2zxv/FlROBKx+9/lEiJvmsycFG0j7+181XAGCH72SJFBbw29TuP9+Ssb+IarQCKYxBuV9pdhzyqrsKuLLYKxe1JcDueaxGrssOBDbSVLMoQG/7qudU/tE+E3WX1y9O3hxt+WgTdPPm8YOPyH738X65MuttS6UqZP5AxO9FwBScRoPHJbx37ouRhVkPHIVMCzRvOE8rHr/G6G+k2A=
+  - secure: gLJU6EisrZEgqg4MQ5tZO3iFUMFYctFaPxRJMo3x8Yt5Sz7IX8tD5igDEm5Tx05lu05OXHhxp1lZfC/SRS1GNPMz6DueepFLiMbr850gFchAaUIk8EW6X11ZcUosbTkZ/zTpDCIfQ7I9KL3rtCnWzI4j1ktRPbU4t1c4KBR3MnUF0CikzLkPz74E61TefpRW5ASeN1OmbpMMvUDx4rRHyxgttSdi3a71sw0d3pu9WKcnoiHPZNt2PkKfoBqj4Ma/BT2jjQ/X2Lj4ILM1hIPvGGf9mrXtlGlIatM8myq1IzWVmxG4+DGTLg8R8DeRfgdZd2Nb7g0JzJBHlQcAioeiQIqbO/AQ3naxUEDSsidLO+o49uxtjyK/t4RMJBmEHiflffS5KP/Ix89vBYil3DNPm+6jlzK9G8r8bTf5N77kcZ9OB0hEXQLS3bcnGhEmLQBFQcIY8OVmCikEPFF5FiSQRgfWDPvH/R+KnbNpGePR/XKtUTmiv2/PU+YiuAmDAda6WoJiZnmMX3VTd8+KUyRTpB8+bsddTfRjaBsuGDDEKi4/8r/3MuI2ERbzrXC4lceP9v27MvX3x0xfiNNCl4CPy1w8scGWOexZ1veDp/sKkMUZiJ8hCClphL806aq5JDVNHKWf+SDmVL7ilMVKgMOTj4IM1J6X0lo85ywYoBo+Ifs=
 android:
   components:
-    - platform-tools
-    - tools
-    - build-tools-23.0.1
-    - android-23
-    - extra-android-m2repository
-    - extra-google-google_play_services
-    - extra-google-m2repository
-licenses:
+  - tools
+  - platform-tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API
+  - android-$EMULATOR_API_LEVEL
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-19
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+  licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
   - google-gdk-license-.+
 before_install:
-  - nvm install 7
-  - node --version
-  - travis_retry curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - travis_retry sudo apt-get update -qq
-  - travis_retry sudo apt-get install -y -qq yarn
-  - chmod +x ./android/gradlew
-  - openssl aes-256-cbc -K $encrypted_b6cc45ee0c0c_key -iv $encrypted_b6cc45ee0c0c_iv -in ./android/app/rn-sample-key.keystore.enc -out ./android/app/rn-sample-key.keystore -d
-  - gem install fastlane --no-rdoc --no-ri --no-document --quiet
-install:
-  - yarn install
+- cd android
+- openssl aes-256-cbc -K $encrypted_981001b85f28_key -iv $encrypted_981001b85f28_iv
+  -in keystore.jks.enc -out keystore.jks -d
+- openssl aes-256-cbc -K $encrypted_c0801aa05af4_key -iv $encrypted_c0801aa05af4_iv
+  -in example_keystore.jks.enc -out example_keystore.jks -d
+- mkdir "$ANDROID_HOME/licenses" || true
+- echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+- echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+- chmod +x gradlew
+- "./gradlew dependencies || true"
+before_script:
+- echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+- emulator -avd test -no-skin -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
 script:
-  - cd android && ./gradlew clean
-  - fastlane beta
-after_script:
-  - ./gradlew assembleRelease crashlyticsUploadDistributionRelease -Pandroid.injected.signing.store.file=./app/$RNSAMPLE_RELEASE_STORE_FILE -Pandroid.injected.signing.store.password=$RNSAMPLE_RELEASE_STORE_PASSWORD -Pandroid.injected.signing.key.alias=$RNSAMPLE_RELEASE_KEY_ALIAS -Pandroid.injected.signing.key.password=$RNSAMPLE_RELEASE_KEY_PASSWORD
-branches:
-  only:
-  - master
-notifications:
-  email:
-    on_success: never
-    on_failure: always
+- "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+before_deploy:
+- cp $TRAVIS_BUILD_DIR/example_keystore.jks $HOME
+- cd app/build/outputs/apk/
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/example_keystore.jks
+  -storepass $storepass -keypass $keypass app-release-unsigned.apk ExampleKeystoreAlias
+- jarsigner -verify app-release-unsigned.apk
+- "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk TravisExample.apk"
+deploy:
+  provider: releases
+  file: TravisExample.apk
+  skip_cleanup: true
+  on:
+    repo: rabee/TravisCiTest
+    tags: true
+    jdk: oraclejdk8
+  api_key:
+    secure: XfRzqK5WI+SUjUGZK40EjPmcqswp+63GJO7atQ8oHqIhR1i/usQt8E0mS0OjVpjfm8/0kDL+NMo0li64ct362h4jzHgGmwuoNfJWQSZBb1/UUZE7Dh21wYUb4DQ+KuezuZ+Fpy/PPHaVXbeQGi3wjoU1ybi5hAC78ok4q799McWWpj4ewp7Lo/Np3f05E5M+o1uJCEFn9A1i1bIcPSYDYtDJ9uM8HIwDBID0D9oOXd5ElGlNCGFoL/0yCqaj3bf3qauunC1rnTJ98hwjvEpwFNjkWu/qTkg6YF0cKKCjsjMzeh6cx+8Y+AHqzlQHe3brnVzvt4hP/tmX3OZzhMutoGPHI9dv61JbBmGBNqwo3s5Grln7wOQPz3sm7Oqk1g1GMVnTC9LuHqoV0Ala8VgbGJbGl7WlrDTAvwZetO5+DVD4xRWPOn5FBzpO3wSJFwESJgSp4KHvBwyQQbLSaNpKlZHevhiiuYGQ9dncg+sswEwmEaB1jAD+RRTCqp+dAgz3CKudeCG2CQJ1hzFeG/IskCfU0i0etK4cdP/LRABlvNj2P0fMfZ4fL1k8qTdysuLW8cNXZvGuQmoBypehUfaJ292ak+TMnsGZqpb7GOquTXWdIEyk0EVKqMe/HlWfVjPsJtmgYQlCFg/rgYRbNoBG890Y6k7GBFGi+xjNREnWNIA=
