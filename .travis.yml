@@ -5,6 +5,7 @@ before_install:
 - chmod +x ./android/gradlew
 install:
 - npm install
+- npm install -g react-native-cli
 - react-native upgrade
 - react-native link
 - react-native run-android
