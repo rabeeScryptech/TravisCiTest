@@ -14,6 +14,7 @@ android:
   - extra-google-m2repository
   - addon-google_apis-google-16
 script:
+- sudo npm install -g react-native-cli
 - mkdir -p android/app/src/main/assets
 - ls
 - rm -rf android/app/build
