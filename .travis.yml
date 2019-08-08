@@ -14,7 +14,7 @@ android:
   - extra-google-m2repository
   - addon-google_apis-google-16
 script:
-- cd android && ./gradlew assembleDebugmkdir -p android/app/src/main/assets && rm -rf android/app/build && react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew clean assembleDebug && cd ../
+- mkdir -p android/app/src/main/assets && rm -rf android/app/build && react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew clean assembleDebug && cd ../
 - ls
 - cd app
 - ls
